@@ -37,21 +37,6 @@ function PullRequestIcon() {
   );
 }
 
-function DragHandleIcon() {
-  return (
-    <svg
-      className={styles.dragHandle}
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M5 3a1 1 0 102 0 1 1 0 00-2 0zm0 5a1 1 0 102 0 1 1 0 00-2 0zm0 5a1 1 0 102 0 1 1 0 00-2 0zm5-10a1 1 0 102 0 1 1 0 00-2 0zm0 5a1 1 0 102 0 1 1 0 00-2 0zm0 5a1 1 0 102 0 1 1 0 00-2 0z" />
-    </svg>
-  );
-}
-
 function ContributionActivity({ activity, years, activeYear, onYearChange }) {
   return (
     <section className={styles.section}>
@@ -91,9 +76,6 @@ function ContributionActivity({ activity, years, activeYear, onYearChange }) {
                 {item.type === "commits" && <CommitIcon />}
                 {item.type === "pull_requests" && <PullRequestIcon />}
                 <span className={styles.text}>{item.text}</span>
-                <span className={styles.dragHandleWrap}>
-                  <DragHandleIcon />
-                </span>
               </div>
               {item.repos && (
                 <ul className={styles.repos}>
@@ -117,9 +99,6 @@ function ContributionActivity({ activity, years, activeYear, onYearChange }) {
                             {r.open} open
                           </span>
                         )}
-                      </span>
-                      <span className={styles.dragHandleWrap}>
-                        <DragHandleIcon />
                       </span>
                     </li>
                   ))}

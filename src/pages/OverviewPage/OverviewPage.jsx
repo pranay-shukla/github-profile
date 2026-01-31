@@ -60,90 +60,101 @@ function OverviewPage() {
 
   useEffect(() => {
     if (calendarDataByYear[activeYear] != null) return;
-    let cancelled = false;
+    const abortController = new AbortController();
 
-    async function loadYearContributions() {
-      setCalendarLoading(true);
-      try {
-        const res = await getContributions(USERNAME, { y: activeYear }).catch(
-          () => null,
-        );
-        if (cancelled) return;
-        const mapped = res
-          ? mapContributionApiToCalendar(res, activeYear)
-          : null;
-        if (cancelled) return;
-        setCalendarDataByYear((prev) => ({ ...prev, [activeYear]: mapped }));
-      } finally {
-        if (!cancelled) setCalendarLoading(false);
-      }
-    }
-
-    loadYearContributions();
+    loadYearContributions(abortController);
     return () => {
-      cancelled = true;
+      abortController.abort();
     };
   }, [activeYear, calendarDataByYear]);
 
   useEffect(() => {
-    let cancelled = false;
+    const abortController = new AbortController();
 
-    async function loadRepos() {
-      try {
-        setReposLoading(true);
-        setReposError(null);
-        const data = await getUserRepos(USERNAME, {
-          sort: "updated",
-          per_page: 6,
-        });
-        if (cancelled) return;
-        const mapped = Array.isArray(data)
-          ? data.map(mapGitHubRepoToPinnedRepo)
-          : [];
-        setRepos(mapped.length ? mapped : fallbackPinnedRepos);
-      } catch (err) {
-        if (!cancelled) {
-          setReposError(err);
-          setRepos(fallbackPinnedRepos);
-        }
-      } finally {
-        if (!cancelled) setReposLoading(false);
-      }
-    }
-
-    loadRepos();
+    loadRepos(abortController);
     return () => {
-      cancelled = true;
+      abortController.abort();
     };
   }, []);
 
   useEffect(() => {
-    let cancelled = false;
+    const abortController = new AbortController();
 
-    async function loadContributionsAll() {
-      try {
-        setContribLoading(true);
-        setContribError(null);
-        const contribRes = await getContributions(USERNAME, { y: "all" }).catch(
-          () => null,
-        );
-        if (cancelled) return;
-        setContributionsCache(contribRes ?? null);
-      } catch (err) {
-        if (!cancelled) {
-          setContribError(err);
-          setContributionsCache(null);
-        }
-      } finally {
-        if (!cancelled) setContribLoading(false);
-      }
-    }
-
-    loadContributionsAll();
+    loadContributionsAll(abortController);
     return () => {
-      cancelled = true;
+      abortController.abort();
     };
   }, []);
+
+  const loadYearContributions = async (abortController) => {
+    setCalendarLoading(true);
+    try {
+      const res = await getContributions(
+        USERNAME,
+        { y: activeYear },
+        abortController,
+      );
+      if (abortController.signal.aborted) return;
+      const mapped = res ? mapContributionApiToCalendar(res, activeYear) : null;
+      if (abortController.signal.aborted) return;
+      setCalendarDataByYear((prev) => ({ ...prev, [activeYear]: mapped }));
+    } catch (err) {
+      if (!abortController.signal.aborted) {
+        setContribError(err);
+        setCalendarDataByYear({});
+      }
+    } finally {
+      if (!abortController.signal.aborted) setCalendarLoading(false);
+    }
+  };
+
+  const loadRepos = async (abortController) => {
+    try {
+      setReposLoading(true);
+      setReposError(null);
+      const data = await getUserRepos(
+        USERNAME,
+        {
+          sort: "updated",
+          per_page: 6,
+        },
+        abortController,
+      );
+      if (abortController.signal.aborted) return;
+      const mapped = Array.isArray(data)
+        ? data.map(mapGitHubRepoToPinnedRepo)
+        : [];
+      setRepos(mapped.length ? mapped : fallbackPinnedRepos);
+    } catch (err) {
+      if (!abortController.signal.aborted) {
+        setReposError(err);
+        setRepos(fallbackPinnedRepos);
+      }
+    } finally {
+      if (!abortController.signal.aborted) setReposLoading(false);
+    }
+  };
+
+  const loadContributionsAll = async (abortController) => {
+    try {
+      setContribLoading(true);
+      setContribError(null);
+      const contribRes = await getContributions(
+        USERNAME,
+        { y: "all" },
+        abortController,
+      );
+      if (abortController.signal.aborted) return;
+      setContributionsCache(contribRes ?? null);
+    } catch (err) {
+      if (!abortController.signal.aborted) {
+        setContribError(err);
+        setContributionsCache(null);
+      }
+    } finally {
+      if (!abortController.signal.aborted) setContribLoading(false);
+    }
+  };
 
   const heatmapCalendarData =
     calendarData ??

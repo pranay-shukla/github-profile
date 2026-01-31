@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_BASE_URL, ERROR_MESSAGES } from '../constants';
+import { ERROR_MESSAGES } from '../constants';
 
 const HTTP_TIMEOUT = 15000;
 

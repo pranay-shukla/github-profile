@@ -104,10 +104,16 @@ function ProfileSidebar({ profile }) {
           <span className={styles.badge} title="YOLO">
             YOLO
           </span>
-          <span className={styles.badge} title="Arctic Code Vault">
+          <span
+            className={`${styles.badge} ${styles.badgeEmoji}`}
+            title="Arctic Code Vault"
+          >
             &#x1F9E0;
           </span>
-          <span className={styles.badge} title="Public Sponsor">
+          <span
+            className={`${styles.badge} ${styles.badgeEmoji}`}
+            title="Public Sponsor"
+          >
             &#x2728;
           </span>
         </div>

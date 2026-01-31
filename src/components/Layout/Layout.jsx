@@ -27,40 +27,39 @@ function Layout() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let cancelled = false;
-
-    async function loadProfile() {
-      try {
-        setLoading(true);
-        setError(null);
-        const raw = await getUserProfileData(USERNAME);
-        if (cancelled) return;
-        const mapped = mapGitHubUserToProfile(raw);
-        setProfile(mapped);
-        setNavTabs(
-          DEFAULT_NAV_TABS.map((tab) => {
-            if (tab.label === "Repositories") {
-              return { ...tab, count: raw.public_repos ?? 0 };
-            }
-            return { ...tab };
-          }),
-        );
-      } catch (err) {
-        if (!cancelled) {
-          setError(err);
-          setProfile(fallbackProfile);
-          setNavTabs(fallbackNavTabs);
-        }
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    }
-
-    loadProfile();
+    const abortController = new AbortController();
+    loadProfile(abortController);
     return () => {
-      cancelled = true;
+      abortController.abort();
     };
   }, []);
+
+  const loadProfile = async (abortController) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const raw = await getUserProfileData(USERNAME, abortController);
+      if (abortController.signal.aborted) return;
+      const mapped = mapGitHubUserToProfile(raw);
+      setProfile(mapped);
+      setNavTabs(
+        DEFAULT_NAV_TABS.map((tab) => {
+          if (tab.label === "Repositories") {
+            return { ...tab, count: raw.public_repos ?? 0 };
+          }
+          return { ...tab };
+        }),
+      );
+    } catch (err) {
+      if (!abortController.signal.aborted) {
+        setError(err);
+        setProfile(fallbackProfile);
+        setNavTabs(fallbackNavTabs);
+      }
+    } finally {
+      if (!abortController.signal.aborted) setLoading(false);
+    }
+  };
 
   const displayProfile = profile ?? fallbackProfile;
   const displayTabs = navTabs ?? fallbackNavTabs;

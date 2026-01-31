@@ -111,7 +111,7 @@
 .achievementsBadges {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 8px;
 }
 
 .badge {
@@ -120,10 +120,25 @@
   justify-content: center;
   width: 32px;
   height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0 4px;
   border-radius: 50%;
   background: var(--color-canvas-subtle);
   border: 1px solid var(--color-border-default);
-  font-size: 14px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-fg-default);
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.badgeEmoji {
+  font-size: 16px;
+  padding: 0;
 }
 
 .organizationsList {
@@ -246,6 +261,16 @@
   .orgAvatar {
     width: 28px;
     height: 28px;
-    font-size: 12px;
+    min-width: 28px;
+    min-height: 28px;
+    font-size: 9px;
+  }
+
+  .badge {
+    padding: 0 3px;
+  }
+
+  .badgeEmoji {
+    font-size: 14px;
   }
 }
