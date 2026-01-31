@@ -1,0 +1,341 @@
+.section {
+  margin-bottom: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border-default);
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-fg-default);
+}
+
+.yearSelectWrap {
+  display: none;
+}
+
+.yearSelectLabel {
+  display: none;
+}
+
+.yearSelect {
+  font-size: 14px;
+  padding: 8px 12px;
+  padding-right: 32px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-canvas-default);
+  color: var(--color-fg-default);
+  cursor: pointer;
+  appearance: auto;
+  min-width: 100px;
+}
+
+.yearSelect:focus {
+  outline: 2px solid var(--color-accent-fg);
+  outline-offset: 2px;
+}
+
+.month {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-fg-muted);
+  margin: 0 0 16px;
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  padding-left: 0;
+  margin-left: 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-border-default);
+}
+
+.item {
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 16px;
+}
+
+.item:last-child {
+  padding-bottom: 0;
+}
+
+.itemLine {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 12px;
+  height: 2px;
+  background: var(--color-border-default);
+}
+
+.itemContent {
+  margin-left: 24px;
+}
+
+.itemRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 24px;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--color-fg-muted);
+  margin-left: 2px;
+}
+
+.text {
+  flex: 1;
+  font-size: 14px;
+  color: var(--color-fg-default);
+  margin: 0;
+  min-width: 0;
+}
+
+.dragHandleWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0.4;
+}
+
+.dragHandle {
+  width: 14px;
+  height: 14px;
+  color: var(--color-fg-muted);
+}
+
+.repos {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 26px;
+  border-left: none;
+}
+
+.repo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  min-height: 24px;
+}
+
+.repo:last-child {
+  margin-bottom: 0;
+}
+
+.repoLink {
+  flex: 1;
+  min-width: 0;
+  color: var(--color-accent-fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repoLink:hover {
+  text-decoration: underline;
+}
+
+.repoPills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.prTag {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.prTagMerged {
+  background: #8250df;
+  color: #fff;
+}
+
+.prTagOpen {
+  background: var(--color-success-emphasis);
+  color: #fff;
+}
+
+.showMoreWrap {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 12px;
+}
+
+.showMoreBtn {
+  font-size: 14px;
+  padding: 6px 16px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-canvas-default);
+  color: var(--color-accent-fg);
+}
+
+.showMoreBtn:hover {
+  background: var(--color-canvas-subtle);
+  border-color: var(--color-fg-muted);
+}
+
+.footerNote {
+  font-size: 12px;
+  color: var(--color-fg-muted);
+  margin: 0;
+}
+
+.footerNote a {
+  color: var(--color-accent-fg);
+}
+
+@media (max-width: 768px) {
+  .section {
+    margin-bottom: 20px;
+    padding-top: 0;
+    border-top: none;
+    border: 1px solid var(--color-border-default);
+    border-radius: 8px;
+    padding: 20px 16px;
+  }
+
+  .headerRow {
+    margin-bottom: 0;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .yearSelectWrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .yearSelectLabel {
+    display: inline;
+    font-size: 14px;
+    color: var(--color-fg-muted);
+    font-weight: 400;
+  }
+
+  .yearSelect {
+    font-size: 14px;
+    padding: 6px 10px;
+    padding-right: 28px;
+    min-width: 80px;
+  }
+
+  .month {
+    font-size: 13px;
+  }
+
+  .timeline::before {
+    left: 5px;
+  }
+
+  .itemLine {
+    width: 10px;
+    top: 10px;
+  }
+
+  .itemContent {
+    margin-left: 20px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+
+  .repos {
+    margin-left: 22px;
+  }
+
+  .repo {
+    font-size: 13px;
+    flex-wrap: wrap;
+  }
+
+  .prTag {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+
+  .dragHandleWrap {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+
+  .month {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .itemRow {
+    flex-wrap: wrap;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+
+  .repos {
+    margin-left: 18px;
+  }
+
+  .repo {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .prTag {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+
+  .showMoreBtn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}

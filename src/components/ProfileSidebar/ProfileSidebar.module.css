@@ -1,0 +1,251 @@
+.sidebar {
+  flex: 0 0 296px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.avatar {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--color-fg-default);
+}
+
+.username {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-fg-muted);
+  margin: 0 0 16px;
+}
+
+.bio {
+  font-size: 16px;
+  color: var(--color-fg-default);
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.skills {
+  font-size: 14px;
+  color: var(--color-fg-muted);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.editBtn {
+  width: 100%;
+  max-width: 280px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-canvas-default);
+  color: var(--color-fg-default);
+  margin-bottom: 16px;
+}
+
+.editBtn:hover {
+  background: var(--color-canvas-subtle);
+  border-color: var(--color-fg-muted);
+}
+
+.stats {
+  font-size: 14px;
+  margin: 0 0 16px;
+  color: var(--color-fg-default);
+}
+
+.statsSep {
+  color: var(--color-fg-muted);
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  width: 100%;
+  max-width: 280px;
+  text-align: left;
+}
+
+.links li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 14px;
+  color: var(--color-fg-default);
+}
+
+.linkIcon {
+  flex-shrink: 0;
+  color: var(--color-fg-muted);
+}
+
+.achievements,
+.organizations {
+  width: 100%;
+  max-width: 280px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.achievementsTitle,
+.organizationsTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--color-fg-default);
+}
+
+.achievementsBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-canvas-subtle);
+  border: 1px solid var(--color-border-default);
+  font-size: 14px;
+}
+
+.organizationsList {
+  display: flex;
+  gap: 4px;
+}
+
+.orgAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--color-canvas-subtle);
+  border: 1px solid var(--color-border-default);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-fg-default);
+  text-decoration: none;
+}
+
+.orgAvatar:hover {
+  background: var(--color-border-muted);
+}
+
+@media (max-width: 1012px) {
+  .sidebar {
+    flex: none;
+    width: 100%;
+    max-width: 296px;
+  }
+}
+
+@media (max-width: 768px) {
+  .avatar {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 12px;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .username {
+    font-size: 18px;
+  }
+
+  .bio {
+    font-size: 15px;
+  }
+
+  .skills {
+    font-size: 13px;
+  }
+
+  .editBtn {
+    max-width: 100%;
+  }
+
+  .links,
+  .achievements,
+  .organizations {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .avatar {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 10px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  .username {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .bio {
+    font-size: 14px;
+  }
+
+  .skills {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .editBtn {
+    padding: 10px 16px;
+    margin-bottom: 12px;
+  }
+
+  .stats {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .links li {
+    font-size: 13px;
+    padding: 6px 0;
+  }
+
+  .achievementsTitle,
+  .organizationsTitle {
+    font-size: 15px;
+  }
+
+  .badge,
+  .orgAvatar {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}

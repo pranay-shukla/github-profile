@@ -1,0 +1,41 @@
+.app {
+  min-height: 100vh;
+  background: var(--color-canvas-default);
+  overflow-x: hidden;
+}
+
+.layout {
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+  gap: 24px;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+@media (max-width: 1012px) {
+  .layout {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    padding: 16px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout {
+    padding: 12px;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,10 @@
+.contentBlock {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .contentBlock {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
