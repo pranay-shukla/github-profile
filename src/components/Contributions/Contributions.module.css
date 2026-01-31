@@ -116,8 +116,10 @@
 
 .chart {
   width: 100%;
-  min-width: 0;
-  overflow: hidden;
+  overflow-x: auto;
+}
+:global(.echarts-for-react) {
+  width: 750px !important;
 }
 
 .yearSelectWrap {
@@ -132,13 +134,14 @@
 }
 
 .heatmapScrollWrap {
-  width: 100%;
+  width: 100% !important;
   min-width: 0;
 }
 
 .heatmapFooter {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   gap: 8px;
 }
 
@@ -208,9 +211,7 @@
 @media (max-width: 768px) {
   .section {
     margin-bottom: 20px;
-    min-width: 400px !important;
-    width: max(100%, 400px);
-    max-width: none;
+    width: 100%;
     flex-shrink: 0;
   }
 
@@ -226,18 +227,15 @@
   .contentRow {
     flex-direction: column;
     gap: 12px;
-    min-width: 400px !important;
     max-width: none;
   }
 
   .content {
-    min-width: 400px !important;
     max-width: none;
     padding: 16px;
   }
 
   .chartWrap {
-    min-width: 400px !important;
     max-width: none;
     overflow: visible;
   }
@@ -248,7 +246,6 @@
     padding: 16px;
     padding-bottom: 12px;
     margin-bottom: 16px;
-    min-width: 400px !important;
     width: 100%;
     box-sizing: border-box;
   }
@@ -256,7 +253,6 @@
   .heatmapScrollWrap {
     display: block;
     width: 100%;
-    min-width: 400px !important;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
@@ -266,10 +262,8 @@
   }
 
   .chart {
-    min-width: 400px !important;
-    width: 400px !important;
-    max-width: none !important;
-    overflow: visible;
+    min-width: 0;
+    overflow-x: auto;
     flex-shrink: 0;
   }
 
@@ -293,28 +287,13 @@
 @media (max-width: 480px) {
   .section {
     margin-bottom: 16px;
-    min-width: 360px;
   }
 
   .contentRow {
-    min-width: 360px;
   }
 
   .content {
-    min-width: 360px;
     padding: 12px;
-  }
-
-  .chartWrap {
-    min-width: 360px;
-  }
-
-  .heatmapBlock {
-    min-width: 336px;
-  }
-
-  .heatmapScrollWrap {
-    min-width: 336px;
   }
 
   .title {
@@ -330,8 +309,8 @@
   }
 
   .chart {
-    min-width: 360px !important;
-    width: 360px !important;
+    min-width: 0;
+    overflow-x: auto;
   }
 
   .legend {

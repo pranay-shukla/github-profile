@@ -124,7 +124,7 @@ function ActivityOverview({
               <path d="M1.75 2.5a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V2.75a.25.25 0 00-.25-.25H1.75zM0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0114.25 15H1.75A1.75 1.75 0 010 13.25V2.75z" />
               <path d="M4 4.75A.75.75 0 014.75 4h6.5a.75.75 0 010 1.5h-6.5A.75.75 0 014 4.75zM4.75 7a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z" />
             </svg>
-            Contributed <a href="/">UptimeAI/uptime_webapp</a>,{" "}
+            Contributed to <a href="/">UptimeAI/uptime_webapp</a>,{" "}
             <a href="/">UptimeAI/uptime_server</a>,{" "}
             <a href="/">UptimeAI/uptime_ml</a> and 13 other repositories
           </p>

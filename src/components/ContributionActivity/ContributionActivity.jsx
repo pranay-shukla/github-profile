@@ -113,10 +113,6 @@ function ContributionActivity({ activity, years, activeYear, onYearChange }) {
           Show more activity
         </button>
       </div>
-      <p className={styles.footerNote}>
-        Seeing something unexpected? Take a look at the{" "}
-        <a href="/">GitHub profile guide</a>.
-      </p>
     </section>
   );
 }

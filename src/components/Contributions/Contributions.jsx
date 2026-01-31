@@ -42,6 +42,7 @@ function Contributions({
 
   const option = useMemo(() => {
     const cellHeight = isMobile ? 10 : 12;
+    const cellWidth = isMobile ? 14 : 16;
     const dayLabelWidth = isMobile ? 22 : 28;
     const labelFontSize = isMobile ? 10 : 11;
     const leftMargin = isMobile ? 24 : 32;
@@ -81,7 +82,7 @@ function Contributions({
         right: 8,
         top: 28,
         bottom: 4,
-        cellSize: ["auto", cellHeight],
+        cellSize: [cellWidth, cellHeight],
         itemStyle: {
           borderWidth: 1,
           borderColor: "#fff",
@@ -141,11 +142,11 @@ function Contributions({
     <section className={styles.section}>
       <div
         className={styles.contentRow}
-        style={isMobile ? { minWidth: 400 } : undefined}
+        style={isMobile ? { maxWidth: "100%" } : undefined}
       >
         <div
           className={styles.content}
-          style={isMobile ? { minWidth: 400 } : undefined}
+          style={isMobile ? { maxWidth: "100%" } : undefined}
         >
           <div className={styles.header}>
             <h2 className={styles.title}>
@@ -189,23 +190,18 @@ function Contributions({
                 <div className={styles.heatmapScrollWrap}>
                   <div
                     className={styles.chart}
-                    style={
-                      isMobile
-                        ? {
-                            width: 400,
-                            minWidth: 400,
-                            height: 160,
-                            flexShrink: 0,
-                          }
-                        : undefined
-                    }
+                    style={{
+                      width: "100%",
+                      overflowX: "auto",
+                      overflowY: "hidden",
+                      minWidth: 0,
+                    }}
                   >
                     <ReactECharts
                       key={activeYear}
                       option={option}
                       notMerge
                       lazyUpdate
-                      autoResize={!isMobile}
                       style={{
                         height: 160,
                         width: isMobile ? 400 : "100%",
