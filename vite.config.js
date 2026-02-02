@@ -13,7 +13,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'build',
-    sourcemap: true,
+    sourcemap: false,
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
